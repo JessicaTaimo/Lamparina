@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Primeiro Trabalho de Jessica Taimo</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        h1 {
+            color: rgb(0, 0, 255);
+        }
+        h2 {
+            color: rgb(0, 0, 255);
+        }
+    </style>
+</head>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyDFajHf5-2dsVl_lSp-EJN8APH0v-SxUes",
+  authDomain: "lampada-af5ef.firebaseapp.com",
+  projectId: "lampada-af5ef",
+  storageBucket: "lampada-af5ef.appspot.com",
+  messagingSenderId: "1036789691289",
+  appId: "1:1036789691289:web:65a3a5b29fb48fd9469908"
+  };
+  firebase.initializeApp(firebaseConfig);
+
+firebase.database().ref("SALA/estado").on("value", snapshot => {
+document.querySelector("#estado-led").textContent = snapshot.val();
+});
+
+
+  function ledOn() {
+    firebase.database().ref("SALA").set({
+      estado: "LIGADA"
+    });
+  }
+
+  function ledOff() {
+    firebase.database().ref("SALA").set({
+      estado: "DESLIGADA"
+    });
+  }
+</script>
+<script src="app.js" defer></script>
+<body>
+    <h1> TME Education Mozambique</h1> <br>
+    <img src="d:\jessica\Programas Arduino\208697393-lâmpada-incandescente-com-cabo-elétrico-dentro-da-renderização-3d.jpg" alt="Lampada" width="400"> <br>
+    <button onclick="ledOn()">Ligar</button>
+    <button onclick="ledOff()">Desligar</button> <br>
+    <h2>Jessica Jose Taimo</h2>
+</body>
+
+</html>
